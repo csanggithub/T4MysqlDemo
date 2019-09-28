@@ -83,115 +83,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BbsAnswer.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BbsClassify.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BbsComment.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BbsNotice.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BbsQuestions.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BbsTags.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsAdvclass.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsAdvlist.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsArticle.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsColumn.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsComment.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsDownload.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsImage.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsImgtype.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsMessage.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsSite.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsTags.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsTemplate.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsVote.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsVoteitem.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CmsVotelog.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
     <Compile Include="EntityHelper1.cs" />
     <Compile Include="Manager1.cs" />
-    <Compile Include="Member.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MemberGroup.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SysAdmin.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysAppsetting.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysCode.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysCodetype.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysLog.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysMenu.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysOrganize.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysPermissions.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SysRole.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4Test.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WxMaterial.cs">
-      <DependentUpon>T4Test.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WxSetting.cs">
       <DependentUpon>T4Test.tt</DependentUpon>
     </Compile>
   </ItemGroup>
