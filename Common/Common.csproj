@@ -71,7 +71,12 @@
     <Compile Include="T4Helper\DBHelper\Manager.cs" />
     <Compile Include="T4Helper\DBHelper\MysqlDbhelper.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="PublicDLL\BouncyCastle.Crypto.dll" />
+    <Content Include="PublicDLL\Google.Protobuf.dll" />
+    <Content Include="PublicDLL\MySql.Data.dll" />
+    <Content Include="PublicDLL\Renci.SshNet.dll" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="T4Helper\Manager.ttinclude" />

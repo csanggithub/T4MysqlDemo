@@ -95,6 +95,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PublicDLL\BouncyCastle.Crypto.dll" />
+    <Content Include="PublicDLL\Google.Protobuf.dll" />
+    <Content Include="PublicDLL\MySql.Data.dll" />
+    <Content Include="PublicDLL\Renci.SshNet.dll" />
     <Content Include="T4Test.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4Test.cs</LastGenOutput>

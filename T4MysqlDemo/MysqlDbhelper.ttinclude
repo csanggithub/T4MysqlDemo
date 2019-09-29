@@ -1,6 +1,8 @@
 ﻿<#@ assembly name="System.Core"#>
 <#@ assembly name="System.Data"#>
-<#@ assembly name="MySql.Data"#>
+<#@ assembly name="$(ProjectDir)PublicDLL\Renci.SshNet.dll" #>
+<#@ assembly name="$(ProjectDir)PublicDLL\MySql.Data.dll" #>
+
 <#@ import namespace="System" #>
 <#@ import namespace="System.Data" #>
 <#@ import namespace="System.Collections.Generic" #>
