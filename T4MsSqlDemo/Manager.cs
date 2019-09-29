@@ -3,18 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.CodeDom;
-using System.CodeDom.Compiler;
-using System.Data.Linq.Mapping;
-using System.Data.Linq;
-using System.Reflection;
-using System.Xml.Linq;
 using Microsoft.VisualStudio.TextTemplating;
 
 namespace T4MysqlDemo
 {
-    class Manager1
+    class Manager
     {
         private class Block
         {
@@ -30,9 +23,9 @@ namespace T4MysqlDemo
         private StringBuilder template;
         protected List<String> generatedFileNames = new List<String>();
 
-        public static Manager1 Create(ITextTemplatingEngineHost host, StringBuilder template)
+        public static Manager Create(ITextTemplatingEngineHost host, StringBuilder template)
         {
-            return (host is IServiceProvider) ? new VSManager(host, template) : new Manager1(host, template);
+            return (host is IServiceProvider) ? new VSManager(host, template) : new Manager(host, template);
         }
 
         public void StartNewFile(String name)
@@ -103,7 +96,7 @@ namespace T4MysqlDemo
             return !(File.Exists(fileName) && File.ReadAllText(fileName) == newContent);
         }
 
-        private Manager1(ITextTemplatingEngineHost host, StringBuilder template)
+        private Manager(ITextTemplatingEngineHost host, StringBuilder template)
         {
             this.host = host;
             this.template = template;
@@ -122,7 +115,7 @@ namespace T4MysqlDemo
             }
         }
 
-        private class VSManager : Manager1
+        private class VSManager : Manager
         {
             private EnvDTE.ProjectItem templateProjectItem;
             private EnvDTE.DTE dte;
