@@ -16,7 +16,7 @@ namespace T4MysqlDemo
             //var connectionString = @"server=localhost;uid=root;pwd=123456;charset=utf8;";
 
             //// 需要解析的数据库
-            //var database = new List<string> { "fyt_cms" };
+            //var database = new List<string> { "testdb" };
 
             //// 文件版权信息
             //var copyright = DateTime.Now.Year + " xxxx Enterprises All Rights Reserved";
