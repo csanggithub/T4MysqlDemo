@@ -25,8 +25,16 @@ namespace Common.T4Helper.DBHelper
                                                     ,`information_schema`.`COLUMNS`.`DATA_TYPE`
                                                     ,`information_schema`.`COLUMNS`.`COLUMN_COMMENT`
                                                     ,`information_schema`.`COLUMNS`.`COLUMN_KEY`
-                                                FROM `information_schema`.`COLUMNS`
-                                                WHERE `information_schema`.`COLUMNS`.`TABLE_SCHEMA` IN ('{0}') ", dbs);
+                                                    ,`information_schema`.`COLUMNS`.`CHARACTER_MAXIMUM_LENGTH`
+                                                    ,`information_schema`.`COLUMNS`.`NUMERIC_PRECISION`
+                                                    ,`information_schema`.`COLUMNS`.`NUMERIC_SCALE`
+                                                    ,`information_schema`.`COLUMNS`.`IS_NULLABLE`
+                                                    ,`information_schema`.`TABLES`.`TABLE_COMMENT`
+                                                FROM `information_schema`.`COLUMNS`,`information_schema`.`TABLES`
+                                                WHERE 
+                                                    `information_schema`.`COLUMNS`.`TABLE_SCHEMA`=`information_schema`.`TABLES`.`TABLE_SCHEMA` 
+                                                    AND `information_schema`.`COLUMNS`.`TABLE_NAME`=`information_schema`.`TABLES`.`TABLE_NAME`
+                                                    AND `information_schema`.`COLUMNS`.`TABLE_SCHEMA` IN ('{0}') ", dbs);
                 using (var reader = MySqlHelper.ExecuteReader(conn, cmd))
                 {
                     while (reader.Read())
@@ -35,18 +43,27 @@ namespace Common.T4Helper.DBHelper
                         var table = reader["TABLE_NAME"].ToString();
                         var column = reader["COLUMN_NAME"].ToString();
                         var type = reader["DATA_TYPE"].ToString();
-                        var comment = reader["COLUMN_COMMENT"].ToString();
-                        var columnKey = reader["COLUMN_KEY"].ToString();
+                        var comment = reader["COLUMN_COMMENT"] == null ? "" : reader["COLUMN_COMMENT"].ToString();
+                        var columnKey = reader["COLUMN_KEY"] == null ? "" : reader["COLUMN_KEY"].ToString();
+                        var maxLength = reader["CHARACTER_MAXIMUM_LENGTH"] == null ? "" : reader["CHARACTER_MAXIMUM_LENGTH"].ToString();
+                        var numPrecision = reader["NUMERIC_PRECISION"] == null ? "" : reader["NUMERIC_PRECISION"].ToString();
+                        var numScale = reader["NUMERIC_SCALE"] == null ? "" : reader["NUMERIC_SCALE"].ToString();
+                        var isNull = reader["IS_NULLABLE"] == null ? "" : reader["IS_NULLABLE"].ToString();
+                        var chTableName = reader["TABLE_COMMENT"] == null ? "" : reader["TABLE_COMMENT"].ToString();
                         var entity = list.FirstOrDefault(x => x.TableName == table);
                         if (entity == null)
                         {
-                            entity = new Entity(table);
+                            entity = new Entity(table, chTableName);
                             entity.Fields.Add(new Field
                             {
                                 Name = column,
                                 Type = GetCLRType(type),
                                 Comment = comment,
-                                ColumnKey = columnKey
+                                ColumnKey = columnKey,
+                                MaxLength= maxLength,
+                                NumPrecision= numPrecision,
+                                NumScale= numScale,
+                                IsNull= isNull
                             });
 
                             list.Add(entity);
@@ -140,15 +157,17 @@ namespace Common.T4Helper.DBHelper
             this.Fields = new List<Field>();
         }
 
-        public Entity(string name)
+        public Entity(string name,string cname)
             : this()
         {
             this.TableName = name;
             this.EntityName = TableNameConvertModelName(name);
+            this.ChName = cname;
         }
 
         public string EntityName { get; set; }
         public string TableName { get; set; }
+        public string ChName { get; set; }
         public List<Field> Fields { get; set; }
 
         public static string TableNameConvertModelName(string name)
@@ -178,5 +197,12 @@ namespace Common.T4Helper.DBHelper
         public string Comment { get; set; }
 
         public string ColumnKey { get; set; }
+
+        public string MaxLength { get; set; }
+
+        public string NumPrecision { get; set; }
+
+        public string NumScale { get; set; }
+        public string IsNull { get; set; }
     }
 }

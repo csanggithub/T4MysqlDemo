@@ -30,7 +30,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Models.Models
 {
     /// <summary>
-    /// <#= entity.EntityName #> Entity Model
+    /// <#= entity.ChName #> 
     /// </summary>
     [Table("<#= entity.TableName #>")]
     public partial class <#= entity.EntityName #>
@@ -42,6 +42,18 @@ namespace Models.Models
 <# if(entity.Fields[i].ColumnKey=="PRI")
 {#>
         [Key]
+<#}#>
+<# if(entity.Fields[i].IsNull=="NO")
+{#>
+        [Required]
+<#}#>
+<# if(entity.Fields[i].Type=="string"&&!string.IsNullOrWhiteSpace(entity.Fields[i].MaxLength)&&entity.Fields[i].MaxLength！="0")
+{#>
+        [MaxLength(entity.Fields[i].MaxLength)]
+<#}#>
+<# if(entity.Fields[i].IsNull=="NO")
+{#>
+        [DisplayName("entity.Fields[i].Comment")]
 <#}#>
         public <#= entity.Fields[i].Type #> <#= entity.Fields[i].Name #> { get; set; }
 
