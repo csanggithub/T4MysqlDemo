@@ -75,7 +75,11 @@ namespace Common.T4Helper.DBHelper
                                 Name = column,
                                 Type = GetCLRType(type),
                                 Comment = comment,
-                                ColumnKey = columnKey
+                                ColumnKey = columnKey,
+                                MaxLength = maxLength,
+                                NumPrecision = numPrecision,
+                                NumScale = numScale,
+                                IsNull = isNull
                             });
                         }
                     }

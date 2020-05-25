@@ -24,6 +24,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -47,13 +48,13 @@ namespace Models.Models
 {#>
         [Required]
 <#}#>
-<# if(entity.Fields[i].Type=="string"&&!string.IsNullOrWhiteSpace(entity.Fields[i].MaxLength)&&entity.Fields[i].MaxLength！="0")
+<# if(entity.Fields[i].Type=="string"&&!string.IsNullOrWhiteSpace(entity.Fields[i].MaxLength)&&entity.Fields[i].MaxLength!="0")
 {#>
-        [MaxLength(entity.Fields[i].MaxLength)]
+        [MaxLength(<#= entity.Fields[i].MaxLength#>)]
 <#}#>
-<# if(entity.Fields[i].IsNull=="NO")
+<# if(!string.IsNullOrWhiteSpace(entity.Fields[i].Comment))
 {#>
-        [DisplayName("entity.Fields[i].Comment")]
+        [DisplayName("<#=entity.Fields[i].Comment#>")]
 <#}#>
         public <#= entity.Fields[i].Type #> <#= entity.Fields[i].Name #> { get; set; }
 
