@@ -45,7 +45,8 @@ namespace Common.T4Helper.DBHelper
                         var type = reader["DATA_TYPE"].ToString();
                         var comment = reader["COLUMN_COMMENT"] == null ? "" : reader["COLUMN_COMMENT"].ToString();
                         var columnKey = reader["COLUMN_KEY"] == null ? "" : reader["COLUMN_KEY"].ToString();
-                        var maxLength = reader["CHARACTER_MAXIMUM_LENGTH"] == null ? "" : reader["CHARACTER_MAXIMUM_LENGTH"].ToString();
+                        var maxLength = reader["CHARACTER_MAXIMUM_LENGTH"] == null? "" : reader["CHARACTER_MAXIMUM_LENGTH"].ToString();
+                        maxLength = string.IsNullOrWhiteSpace(maxLength)||long.Parse(maxLength)>= 2147483647 ? "": maxLength;
                         var numPrecision = reader["NUMERIC_PRECISION"] == null ? "" : reader["NUMERIC_PRECISION"].ToString();
                         var numScale = reader["NUMERIC_SCALE"] == null ? "" : reader["NUMERIC_SCALE"].ToString();
                         var isNull = reader["IS_NULLABLE"] == null ? "" : reader["IS_NULLABLE"].ToString();

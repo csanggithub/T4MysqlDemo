@@ -18,7 +18,7 @@
             var conn = new MySqlConnection(@"server=127.0.0.1;uid=root;pwd=123456;charset=utf8;");
 
             // 需要解析的数据库
-            var databases = new List<string> { "test_db" };
+            var databases = new List<string> { "testdb" };
             try
             {
                 conn.Open();
@@ -49,7 +49,8 @@
                         var type = reader["DATA_TYPE"].ToString();
                         var comment = reader["COLUMN_COMMENT"] == null ? "" : reader["COLUMN_COMMENT"].ToString();
                         var columnKey = reader["COLUMN_KEY"] == null ? "" : reader["COLUMN_KEY"].ToString();
-                        var maxLength = reader["CHARACTER_MAXIMUM_LENGTH"] == null ? "" : reader["CHARACTER_MAXIMUM_LENGTH"].ToString();
+                        var maxLength = reader["CHARACTER_MAXIMUM_LENGTH"] == null? "" : reader["CHARACTER_MAXIMUM_LENGTH"].ToString();
+                        maxLength = string.IsNullOrWhiteSpace(maxLength)||long.Parse(maxLength)>= 2147483647 ? "": maxLength;
                         var numPrecision = reader["NUMERIC_PRECISION"] == null ? "" : reader["NUMERIC_PRECISION"].ToString();
                         var numScale = reader["NUMERIC_SCALE"] == null ? "" : reader["NUMERIC_SCALE"].ToString();
                         var isNull = reader["IS_NULLABLE"] == null ? "" : reader["IS_NULLABLE"].ToString();

@@ -44,7 +44,7 @@ namespace Models.Models
 {#>
         [Key]
 <#}#>
-<# if(entity.Fields[i].IsNull=="NO")
+<# if(entity.Fields[i].IsNull=="NO"&&entity.Fields[i].ColumnKey!="PRI")
 {#>
         [Required]
 <#}#>
@@ -54,7 +54,7 @@ namespace Models.Models
 <#}#>
 <# if(!string.IsNullOrWhiteSpace(entity.Fields[i].Comment))
 {#>
-        [DisplayName("<#=entity.Fields[i].Comment#>")]
+        [DisplayName("<#=entity.Fields[i].Comment#>"), Description("<#=entity.Fields[i].Comment#>")]
 <#}#>
         public <#= entity.Fields[i].Type #> <#= entity.Fields[i].Name #> { get; set; }
 
